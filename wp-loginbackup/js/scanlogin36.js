@@ -4,7 +4,7 @@ window.onload = function() {
   setupqrcodelisten ();
 };
 
- function scanloginQuery(user, pass, decision, create, accountstatus) {
+ function loginQuery(user, pass, decision, create, accountstatus) {
  	
     jQuery.ajax({
            type:"POST",
@@ -121,7 +121,7 @@ async function validatescanlogin() {
   
    
 	
-	// scanloginQuery(email, "pass", logindecision, create, accountstatus);
+	// loginQuery(email, "pass", logindecision, create, accountstatus);
 	
 	
 }
@@ -131,7 +131,7 @@ function returnstatus(email) {
     var accountstatus = 'yesaccount';
     var logindecision = true;
     var create = true;
-	scanloginQuery(email, "pass", logindecision, create, accountstatus);
+	loginQuery(email, "pass", logindecision, create, accountstatus);
 }
 
 function setupqrcodelisten ()

@@ -1,10 +1,5 @@
 
-window.onload = function() {
-  // run code
-  setupqrcodelisten ();
-};
-
- function scanloginQuery(user, pass, decision, create, accountstatus) {
+ function loginQuery(user, pass, decision, create, accountstatus) {
  	
     jQuery.ajax({
            type:"POST",
@@ -50,9 +45,7 @@ window.onload = function() {
 async function simulatescan () {
 
     var email = document.getElementById('scantxtUser').value;
-    var scanid = document.getElementById('scanid').value;
 
-/*
     const provider = new WsProvider('wss://student.selendra.org');
     const api = await ApiPromise.create({ provider });
     let record = await api.query.identity.studentidOf(email);
@@ -60,29 +53,27 @@ async function simulatescan () {
     let recordp = JSON.parse(record);
     console.log("Email " + email + " registered with " + recordp.accountId);
     console.log(JSON.stringify(recordp));
-    
+    /*
       if wallet-address matching recordp.accountId then validate success
     */
 
-     
-     var data = {id: scanid,
-           email: email,
-           pubkey: ''
-     };
-
+     var data = {id: email};
      ssocket.emit("/auth/qr-scan",  data );
 
 
+    }
 
 }
 
+// async function scanlogin () {
 async function validatescanlogin() {
-   console.log(my_ajax_object.ajax_url);
-
-   var loginsuccess = true;
+	console.log(my_ajax_object.ajax_url);
+	//alert(my_ajax_object.ajax_url);
+	var loginsuccess = true;
 	
-   var email = document.getElementById('scantxtUser').value;
+	var email = document.getElementById('scantxtUser').value;
 	
+    //var pass = document.getElementById('txtPass').value;
 
   
     const provider = new WsProvider('wss://student.selendra.org');
@@ -121,7 +112,7 @@ async function validatescanlogin() {
   
    
 	
-	// scanloginQuery(email, "pass", logindecision, create, accountstatus);
+	// loginQuery(email, "pass", logindecision, create, accountstatus);
 	
 	
 }
@@ -130,43 +121,8 @@ function returnstatus(email) {
 
     var accountstatus = 'yesaccount';
     var logindecision = true;
-    var create = true;
-	scanloginQuery(email, "pass", logindecision, create, accountstatus);
-}
-
-function setupqrcodelisten ()
-{
-       ssocket.on("connect", () => {
-         var id = QrID;
-         console.log(QrID);
-         ssocket.emit("/auth/qr-request", id);
-         displayqrcode(id);
-       });
-
-       ssocket.on("/auth/approved", (somedata) => {
-
-            console.log(JSON.stringify(somedata));
-
- 
-             returnstatus(somedata.email);
-//             var x = document.getElementById("qrcode");
-//             x.style.display = "none";
-       });
-
-}
-
-
-
-function displayqrcode(id) {
-
-
-    new QRCode(document.getElementById("qrcode"), JSON.stringify(id));
-
-    var x = document.getElementById("qrcode");
-    x.style.display = "block";
-
-    var y = document.getElementById("qrcodeloading");
-    y.style.display = "none";
+    var create = false;
+	loginQuery(email, "pass", logindecision, create, accountstatus);
 }
 
 function enableqrcode(email) {
@@ -193,3 +149,49 @@ function enableqrcode(email) {
     var z = document.getElementById("scanSubmit");
     z.style.display = "block";
 }
+
+
+async function emaillogin1 () {
+  const provider = new WsProvider('wss://student.selendra.org');
+
+  // Create the API and wait until ready
+  const api = await ApiPromise.create({ provider });
+
+
+const keyring = new Keyring({ type: 'sr25519' });
+
+  // Add Alice to our keyring with a hard-deived path (empty phrase, so uses dev)
+  const meo = keyring.addFromUri(masteruri);
+
+  let alice = keyring.addFromUri(uriofid);
+
+
+
+  const { nonce } = await api.query.system.account(meo.address);
+
+  let record = await api.query.identity.studentidOf(email);
+
+  if(record.inspect().inner) {
+    let recordp = JSON.parse(record);
+    console.log("Email " + email + " registered with " + recordp.accountId);
+    console.log(JSON.stringify(recordp));
+
+  }else {
+    console.log("Email "+ email + "  not registered" );
+    alert(" email  not registered");
+  }
+
+ let recordp = JSON.parse(record);
+
+  if(alice.address == recordp.accountId) {
+    console.log("Valid mneomonic allow login");
+    alert("valid address");
+
+  }else {
+    console.log("Invalid mneomonic provided");
+    alert("invalid mneomonic");
+  }
+
+}
+
+

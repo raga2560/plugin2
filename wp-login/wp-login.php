@@ -20,15 +20,41 @@
 	 wp_enqueue_script( 'mytest', plugin_dir_url( __FILE__ ) . '/js/mytest.js' );
 	 wp_enqueue_script( 'mnemoniclogin10', plugin_dir_url( __FILE__ ) . '/js/mnemoniclogin10.js', "", null );
 	 wp_enqueue_script( 'extensionlogin09', plugin_dir_url( __FILE__ ) . '/js/extensionlogin09.js', "", null );
-	 wp_enqueue_script( 'emaillogin18', plugin_dir_url( __FILE__ ) . '/js/emaillogin18.js', "", null );
+	 wp_enqueue_script( 'emaillogin23', plugin_dir_url( __FILE__ ) . '/js/emaillogin23.js', "", null );
 	 wp_enqueue_script( 'scanlogin36', plugin_dir_url( __FILE__ ) . '/js/scanlogin36.js', "", null );
      wp_localize_script( 'mylogin', 'my_ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
+
+//     wp_register_script('prefix_uid', '//cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuidv4.min.js'); 
+//     wp_enqueue_script('prefix_uid');
+
+//     wp_register_script('prefix_qrcode', '//cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.js');
+//     wp_enqueue_script('prefix_qrcode');
+
+//    wp_enqueue_script( 'socketfun5', plugin_dir_url( __FILE__ ) . '/js/socketfun5.js', "", null );
+//     wp_enqueue_script('socketfun5');
 
      wp_register_script('prefix_bootstrap', '//cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js');
      wp_enqueue_script('prefix_bootstrap');
      wp_register_style('prefix_bootstrap', '//cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css');
      wp_enqueue_style('prefix_bootstrap');
 	 
+    wp_register_style('plugin_style', plugin_dir_url( __FILE__ ) .'/style.css');
+   wp_enqueue_style('plugin_style');
+
+     wp_register_style('bootstrap_min_css', '//cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css');
+   wp_enqueue_style('bootstrap_min_css');
+
+   wp_register_style('daisyui', '//cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css');
+   wp_enqueue_style('daisyui');
+
+   wp_register_style('daisyui@2.6.0', '//cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css');
+   wp_enqueue_style('daisyui@2.6.0');
+
+   wp_register_style('googleapis', 'https://fonts.googleapis.com');
+   wp_enqueue_style('googleapis');
+
+   wp_register_style('gstatic', 'https://fonts.gstatic.com');
+   wp_enqueue_style('daisygstaticui');
 	 
 	 
  }
@@ -84,7 +110,7 @@ if (is_admin()) {
         array(
             'ajax_url' => admin_url('admin-ajax.php'),
             'home_url' => get_home_url(),
-            'logout_nonce' => wp_create_nonce('ajax-logout-nonce'),
+            // 'logout_nonce' => wp_create_nonce('ajax-logout-nonce'),
         )
     );
 }
@@ -156,179 +182,74 @@ const { web3Accounts, web3Enable, web3FromAddress,
  
 </script>
 
-      <div class="container">
-          <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-              <div class="panel panel-info" >
-                      <div class="panel-heading">
-                          <div class="panel-title">Email login</div>
-                          <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>
-                      </div>
+<script> 
+   function notimplemented() {
+     alert("Not implemented");
+   }
+   function registerinmobile() {
+     alert("Register in studentid-app");
+   }
 
-                      <div style="padding-top:30px" class="panel-body" >
+</script>
 
-                          <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-                            <form id="emailloginform" class="form-horizontal" role="form">
-                                <div style="margin-bottom: 25px" class="input-group">
-                                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                  <input id="txtUser" name="txtUser" type="email" class="form-control" name="username" value="" placeholder="Email">
-                                </div>
-
-                                <div style="margin-bottom: 25px" class="input-group">
-                                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                  <input id="txtPass" name="txtPass" type="password" class="form-control" name="password" placeholder="Password">
-                                </div>
-
-                                <div style="margin-top:10px" class="form-group">
-                                    <!-- Button -->
-                                    <div class="col-sm-12 controls">
-                                      
-                                      
-									  
-				  <a id="emailtxtSubmit" name="emailtxtSubmit" onclick="emaillogin();" class="btn btn-success">Login  </a>
-				  <a id="logout" name="logout" onclick="logout();" class="btn btn-success">Logout for testing  </a>
-                                    </div>
-                                </div>
-								<div id="message" name="message">
-								
-								</div>
-								
-                            </form>
-                          </div>
-                      </div>
-          </div>
+      <div class="container-main revers">
+      <div>
+        <h4><b>Selendra Account Login</b></h4>
       </div>
-	  
-	  <div class="container" >
-            
-             <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-              <div class="panel panel-info" >
-                      <div class="panel-heading">
-                          <div class="panel-title">QRcode login</div>
-                          
-                      </div>
+      <br />
+      <br />
+      <div class="row gx-5">
+        <div class="col-lg-7">
+          <div>
+            <button type="button" class="button-email">Email</button>
+            <a class="button-phone" onclick="notimplemented();" >Phone Number</a>
+            <a class="button-phone" onclick="notimplemented();" >Extension </a>
+          </div>
+          <br />
+          <br />
+          <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+          <form id="emailloginform" role="form">
+            <div class="mb-4">
+              <label for="emailloginform" class="form-label">Email</label>
+              <input id="txtUser" name="txtUser" type="email" class="form-control"  value="" placeholder="Email" />
+            </div>
+            <div class="mb-4">
+              <label for="emailloginform" class="form-label">Password</label>
+              <input id="txtPass" name="txtPass" type="password" class="form-control"  placeholder="Password" />
+            </div>
+            <button type="button" class="submit-btn" onclick="emaillogin();">Submit</button>
+          </form>
 
-                      <div style="padding-top:30px" class="panel-body" >
+        <br />
+          <div  id="message" class="alert-danger " name="message" ></div>
 
-                          <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-                            <form id="scanloginform" class="form-horizontal" role="form">
-							 <!-- div style="margin-bottom: 25px" class="input-group">
-                                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                  <input id="scantxtUser" name="scantxtUser" type="email" class="form-control" name="scanusername" value="" placeholder="Email">
-                                </div>
-                                <div>
-                                  <input id="scanid" name="scanid" type="text" class="form-control"  value="" placeholder="scanid">
-                                </div -->
-
-                                <div style="margin-bottom: 25px" class="input-group">
-                                
-				<div style="float:right; display:none; " id="qrcode"></div>
-
-
-
-      <div style="display:block"     id="qrcodeloading"  class="spinner-border text-primary"     >  </div>
-                </div>				
-								</div>
-
-								
-                
-				
-           <div style="margin-top:10px" class="form-group">
-                                    <!-- Button -->
-					 <!-- div class="col-sm-12 controls">
-                                      
-                                      
-			  <a id="validatescanSubmit" name="validatescanSubmit" onclick="validatescanlogin();" class="btn btn-success">Validate user  </a>
-                                    </div>
-                                    <div class="col-sm-12 controls">
-			  <a id="scanSubmit"  name="scanSubmit" onclick="simulatescan();" class="btn btn-success">Simulate scan  </a>
-                                    </div -->
-                                </div>
-								<div id="scanmessage" name="scanmessage">
-								
-								</div>
-								</div>
-                      </div>
+        <div>
+          <h6  onclick="registerinmobile();" >Register Now</h6>
         </div>
-		
-	  <!-- div class="container">
-          <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-              <div class="panel panel-info" >
-                      <div class="panel-heading">
-                          <div class="panel-title">Mnemonic login</div>
-                          
-                      </div>
-
-                      <div style="padding-top:30px" class="panel-body" >
-
-                          <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-                            <form id="mneloginform" class="form-horizontal" role="form">
-                                <div style="margin-bottom: 25px" class="input-group">
-                                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                  <input id="Publickey" name="Publickey" type="text" class="form-control" name="Publickey" value="" placeholder="Publickey">
-                                </div>
-
-                                <div style="margin-bottom: 25px" class="input-group">
-                                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                  <input id="txtMnemonic" name="txtMnemonic" type="text" class="form-control" name="Mnemonic" value="" placeholder="Mnemonic">
-                                </div>
-
-                                <div style="margin-top:10px" class="form-group">
-                                    
-                                    <div class="col-sm-12 controls">
-                                                                           
-									  
-									  <a id="mneSubmit" name="mnetxtSubmit" onclick="menomoniclogin();" class="btn btn-success">Login  </a>
-                                    </div>
-                                </div>
-								<div id="mnemessage" name="mnemessage">
-								
-								</div>
-                            </form>
-                          </div>
-                      </div>
-          </div>
-      </div -->
-	  
-	   <div class="container">
-          <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-              <div class="panel panel-info" >
-                      <div class="panel-heading">
-                          <div class="panel-title">Extension login</div>
-                          
-                      </div>
-
-                      <div style="padding-top:30px" class="panel-body" >
-
-                          <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-                            <form id="extloginform" class="form-horizontal" role="form">
-                                <div style="margin-bottom: 25px" class="input-group">
-                                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                  <input id="pubkeyinextension" name="pubkeyinextension" type="text" class="form-control" name="pubkeyinextension" value="" placeholder="External Publickey">
-                                </div>
-							<div style="margin-bottom: 25px" class="input-group">
-                                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                  <input id="extnemail" name="extnemail" type="email" class="form-control"  value="" placeholder="Extn Email">
-                                </div>
-                                
-
-                                <div style="margin-top:10px" class="form-group">
-                                    <!-- Button -->
-                                    <div class="col-sm-12 controls">
-                                                                           
-									  
-									  <a id="extsubmit" name="exttxtSubmit" onclick="extensionlogin();" class="btn btn-success">Login  </a>
-									  
-                                    </div>
-                                </div>
-								<div id="extmessage" name="extmessage">
-								
-								</div>
-								
-                            </form>
-                          </div>
-                      </div>
-          </div>
       </div>
+
+      <div class="col-lg-5">
+        <div>
+          <center>
+            <!-- div><img src="<?php echo plugin_dir_url( __FILE__ );?>/images/qr.png" height="150" /></div -->
+				<div style="float:right; display:none; " id="qrcode"></div>
+      <div style="display:block"     id="qrcodeloading"  class="spinner-border text-primary"     >  </div>
+            <br />
+            <h6><b>Login with QR Code</b></h6>
+            <br />
+            <p>
+              Scan this code with the
+              <span class="url-sel">Bitriel mobile app</span> to log in
+              instantly.
+            </p>
+          </center>
+        </div>
+      </div>
+
+      </div>
+    </div>
+
+
 	  
 	  
 	  
@@ -337,6 +258,7 @@ const { web3Accounts, web3Enable, web3FromAddress,
     else{
 ?>
         <center>Click <a href="<?php echo wp_logout_url();?>">here</a> to logout</center>
+				  <a id="logout" name="logout" onclick="logout();" class="btn btn-success">Logout for testing  </a>
 <?php
     }
  }

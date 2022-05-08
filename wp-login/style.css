@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap");
+
+* {
+  font-family: "Quicksand", sans-serif !important;
+}
+
+.container-main-navbar {
+  display: flex !important;
+  flex-wrap: inherit !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 40% !important;
+}
+.container-main {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 40% !important;
+}
+.sub-main-title-bg {
+  background-color: #e5f8ff !important;
+  padding: 10px !important;
+  margin-bottom: 50px !important;
+}
+.url-sel {
+  color: #13adff !important;
+  text-decoration: none !important;
+}
+.button-email {
+  background-color: #e6e6e6 !important;
+  color: black !important;
+  border: none !important;
+  padding: 7px 18px 7px 18px !important;
+  width: auto !important;
+  border-radius: 5px !important;
+}
+.button-phone1 {
+  background-color: #e6e6e6 !important;
+  color: black !important;
+  border: none !important;
+  padding: 7px 18px 7px 18px !important;
+  width: auto !important;
+  border-radius: 5px !important;
+  margin-left: 12px !important;
+}
+.button-phone {
+  border: none !important;
+  color: #000000 !important;
+  padding-left: 12px !important;
+  text-decoration: none !important;
+}
+.cambodia-number {
+  background: #ededed !important;
+  border-radius: 8px !important;
+  padding: 0.8rem 0.75rem !important;
+}
+.cm-img {
+  width: 26% !important;
+}
+.form-controls {
+  display: block !important;
+  width: 100% !important;
+  padding: 0.8rem 0.75rem !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  color: #212529 !important;
+  background: #ededed !important;
+  background-clip: padding-box !important;
+  border: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  border-radius: 0.25rem !important;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+}
+.submit-btn {
+  background: #00a9f9 !important;
+  font-weight: 700 !important;
+  width: 100% !important;
+  padding: 12px !important;
+  border: none !important;
+  border-radius: 8px !important;
+  color: white !important;
+  margin-top: 12px !important !important;
+}
+.submit-btn:hover {
+  background-color: #156aa8 !important;
+}
+.qr-text {
+  font-weight: 900 !important;
+  font-size: 22px !important;
+  color: #000000 !important;
+}
+@media screen and (max-width: 991px) {
+  .revers {
+    display: none !important;
+  }
+  .vector {
+    display: none !important;
+  }
+}
+@media screen and (min-width: 991px) {
+  .revers-mobile {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 991px) {
+  .container-main {
+    width: 90% !important;
+  }
+}
