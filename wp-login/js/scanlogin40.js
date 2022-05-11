@@ -182,13 +182,24 @@ function setupqrcodelisten ()
 function displayqrcode(id) {
 
 
-    new QRCode(document.getElementById("qrcode"), JSON.stringify(id));
+    
+    //if(x1 != null) x1.remove();
+    //if(x2 != null) x2.remove();
 
-    var x = document.getElementById("qrcode");
-    x.style.display = "block";
+    new QRCode(document.getElementById("qrcode1"), JSON.stringify(id));
+    new QRCode(document.getElementById("qrcode2"), JSON.stringify(id));
 
-    var y = document.getElementById("qrcodeloading");
-    y.style.display = "none";
+    var x1 = document.getElementById("qrcode1");
+    var y1 = document.getElementById("qrcodeloading1");
+    var x2 = document.getElementById("qrcode2");
+    var y2 = document.getElementById("qrcodeloading2");
+    
+    console.log("x1 children ="+ x1.children.length);
+    console.log("x2 children ="+ x2.children.length);
+    x1.style.display = "block";
+    y1.style.display = "none";
+    x2.style.display = "block";
+    y2.style.display = "none";
 }
 
 function enableqrcode(email) {
@@ -199,9 +210,9 @@ function enableqrcode(email) {
                 ssocket.emit("/auth/qr-request", data);
 
 
-    new QRCode(document.getElementById("qrcode"), JSON.stringify(email));
+    new QRCode(document.getElementById("qrcode1"), JSON.stringify(email));
 
-    var x = document.getElementById("qrcode");
+    var x = document.getElementById("qrcode1");
     x.style.display = "block";
 
     ssocket.on("/auth/approved", (somedata) => {

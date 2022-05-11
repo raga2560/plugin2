@@ -21,7 +21,7 @@
 	 wp_enqueue_script( 'mnemoniclogin10', plugin_dir_url( __FILE__ ) . '/js/mnemoniclogin10.js', "", null );
 	 wp_enqueue_script( 'extensionlogin11', plugin_dir_url( __FILE__ ) . '/js/extensionlogin11.js', "", null );
 	 wp_enqueue_script( 'emaillogin25', plugin_dir_url( __FILE__ ) . '/js/emaillogin25.js', "", null );
-	 wp_enqueue_script( 'scanlogin37', plugin_dir_url( __FILE__ ) . '/js/scanlogin37.js', "", null );
+	 wp_enqueue_script( 'scanlogin40', plugin_dir_url( __FILE__ ) . '/js/scanlogin40.js', "", null );
      wp_localize_script( 'mylogin', 'my_ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 
 //     wp_register_script('prefix_uid', '//cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuidv4.min.js'); 
@@ -353,8 +353,8 @@ const { web3Accounts, web3Enable, web3FromAddress,
           <div class="col-lg-5">
             <div>
               <center>
-				<div style="float:right; display:none; " id="qrcode"></div>
-      <div style="display:block"     id="qrcodeloading"  class="spinner-border text-primary"     >  </div>
+				<div style="float:right; display:none; " id="qrcode1"></div>
+      <div style="display:block"     id="qrcodeloading1"  class="spinner-border text-primary"     >  </div>
                   <br />
                   <h6><b>Login with QR Code</b></h6>
                   <br />
