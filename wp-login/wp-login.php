@@ -341,7 +341,7 @@ const { web3Accounts, web3Enable, web3FromAddress,
                   aria-describedby="emailHelp"
                 />
               </div>
-              <button type="button" class="submit-btn">Submit</button>
+            <button type="button" class="submit-btn" onclick="notimplemented();">Submit</button>
             </form>
             <br />
             <div>
@@ -421,7 +421,7 @@ const { web3Accounts, web3Enable, web3FromAddress,
               <input
                 type="email"
                 class="form-controls"
-                id="exampleInputEmail2"
+              id="txtUser" name="txtUser"  placeholder="Email" 
                 aria-describedby="emailHelp"
               />
             </div>
@@ -432,11 +432,11 @@ const { web3Accounts, web3Enable, web3FromAddress,
               <input
                 type="password"
                 class="form-controls"
-                id="exampleInputEmail3"
+               id="txtPass" name="txtPass"  placeholder="Password" />
                 aria-describedby="emailHelp"
               />
             </div>
-            <button type="button" class="submit-btn">Submit</button>
+            <button type="button" class="submit-btn" onclick="emaillogin();">Submit</button>
           </form>
           <br />
           <div>
