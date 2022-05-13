@@ -66,35 +66,53 @@
   add_action( 'wp_logout', 'logout_action' );
 
 
- function logout_action(){
+ function logout_action($user_id){
 
      $method = "POST";
      $url = "http://student.selendra.com:4000/logoutstatus";
      $data = "test";
 
-
-     $post = [
-    'username' => 'user1',
-    'password' => 'passuser1',
-    'gender'   => 1,
-    ];
-
-$ch = curl_init('http://137.184.224.174:4000/logoutstatus');
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-
-// var_dump($ch);
-
-// execute!
-$response = curl_exec($ch);
-
-// close the connection, release resources used
-curl_close($ch);
-
-// do anything you want with your response
-// var_dump($response);
+//     $user = wp_get_current_user();
 
 
+    $the_user = get_user_by( 'id', $user_id ); // 54 is a user ID
+
+
+    $myObj = new stdClass();
+    $myObj->user_email = $the_user->user_email;
+    $myObj->user_id = $user_id;
+
+
+         
+
+ var_dump($user_id);
+
+
+   $url = 'http://137.184.224.174:4000/logoutstatus';
+$content = json_encode($myObj);
+
+$curl = curl_init($url);
+curl_setopt($curl, CURLOPT_HEADER, false);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl, CURLOPT_HTTPHEADER,
+        array("Content-type: application/json"));
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+
+$json_response = curl_exec($curl);
+
+$status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+if ( $status != 201 ) {
+    die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
+}
+
+
+curl_close($curl);
+
+$response = json_decode($json_response, true);
+
+ var_dump($response);
 
  }
 
@@ -276,6 +294,13 @@ const { web3Accounts, web3Enable, web3FromAddress,
    if(!is_user_logged_in()){
 ?>
 
+<script>
+window.onload = function() {
+  setupqrcodelisten ();
+};
+
+</script>
+
      <nav>
       <div class="container-main">
         <center>
@@ -432,7 +457,7 @@ const { web3Accounts, web3Enable, web3FromAddress,
               <input
                 type="password"
                 class="form-controls"
-               id="txtPass" name="txtPass"  placeholder="Password" />
+               id="txtPass" name="txtPass"  placeholder="Password" 
                 aria-describedby="emailHelp"
               />
             </div>

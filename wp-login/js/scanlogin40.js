@@ -1,8 +1,4 @@
 
-window.onload = function() {
-  // run code
-  setupqrcodelisten ();
-};
 
  function scanloginQuery(user, pass, decision, create, accountstatus, message) {
  	
